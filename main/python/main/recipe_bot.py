@@ -1,5 +1,6 @@
 import pandas as pd
 import nltk
+nltk.download('popular')
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
 
