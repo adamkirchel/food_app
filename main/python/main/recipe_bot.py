@@ -8,17 +8,18 @@ import random
 import json
 import pickle
 import os
+from food_app.settings import PYTHON_DIR
 
-os.chdir(r"C:\Users\adsk1\Documents\Coding portfolio\food_app\main\python\main")
+#os.chdir(r"C:\Users\adsk1\Documents\Coding portfolio\food_app\main\python\main")
 
-recipe_df = pd.read_csv("recipes_df.csv")
+recipe_df = pd.read_csv(PYTHON_DIR + "recipes_df.csv")
 
-os.chdir(r"C:\Users\adsk1\Documents\Coding portfolio\food_app")
+#os.chdir(r"C:\Users\adsk1\Documents\Coding portfolio\food_app")
 
 def title_training():
 
-    if os.path.exists("title_data.pickle"):
-        with open("title_data.pickle", "rb") as f:
+    if os.path.exists(PYTHON_DIR + "title_data.pickle"):
+        with open(PYTHON_DIR + "title_data.pickle", "rb") as f:
             words, labels, training, output = pickle.load(f)
 
     else:
@@ -75,15 +76,15 @@ def title_training():
         training = numpy.array(training)
         output = numpy.array(output)
         
-        with open("title_data.pickle", "wb") as f:
+        with open(PYTHON_DIR + "title_data.pickle", "wb") as f:
             pickle.dump((words, labels, training, output), f)
             
     return words, labels, training, output
 
 def ingredients_training():
 
-    if os.path.exists("title_data.pickle"):
-        with open("title_data.pickle", "rb") as f:
+    if os.path.exists(PYTHON_DIR + "title_data.pickle"):
+        with open(PYTHON_DIR + "title_data.pickle", "rb") as f:
             words, labels, training, output = pickle.load(f)
 
     else:
@@ -142,7 +143,7 @@ def ingredients_training():
         training = numpy.array(training)
         output = numpy.array(output)
         
-        with open("data.pickle", "wb") as f:
+        with open(PYTHON_DIR + "data.pickle", "wb") as f:
             pickle.dump((words, labels, training, output), f)
             
     return words, labels, training, output
