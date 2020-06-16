@@ -1,0 +1,75 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+		
+	<h3>{{recipe_object.title}}</h3>
+	<br>
+	<div class="recipe-details">
+		<table class="recipe-details">
+			<tr>
+				<td>Difficulty:   {{recipe_object.difficulty}}</td>
+				<td>Preparation Time:   {{recipe_object.preparation_time}}</td>
+				<td>Serves:   {{recipe_object.serves}}</td>
+			</tr>
+		</table>
+	</div>
+	<br><br>
+	
+<div class = "row">
+	<div class = "col">	
+		<div class="tab">
+			<ul class="tab-nav">
+			  <li data-li="ingredients" class="active">
+				<p>Ingredients</p>
+			  </li>
+			  <li data-li="method">
+				<p>Method</p>
+			  </li>
+			</ul>
+		</div>
+
+		<br>
+
+		<div class="tab-contents">
+			  <div class="item ingredients active">
+				<div class="item_info">
+				  <div class="img"></div>
+					<ul>
+						{% for ingredient in ingredients %}
+							<li>{{ingredient}}</li>
+						{% endfor %}
+					</ul>
+				  
+				</div>
+			  </div>
+			  <div class="item method">
+				<div class="item_info">
+				  <div class="img"></div>
+					<ul>
+						{{recipe_object.method|safe}}
+					</ul>
+				  
+				</div>
+			  </div>
+			  
+		</div>
+	</div>
+
+
+	<div class="col" style="padding-top:50px;">
+		<img class="d-block w-100" style="border-radius:10px;" src="{{recipe_object.image_url}}" alt="Fifth slide">
+		<br><br>
+		<h4>Add it to your schedule:</h4>
+		<br>
+		<form method="POST"> 
+			{% csrf_token %}
+			{{ form }}
+			<div class="btn-container">
+				<button class="btn" type="submit">Submit</button>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+{% endblock %}

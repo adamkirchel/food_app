@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  
+  <!-- Google Fonts Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{% static 'main/personal/css/style.css' %}">
+ 
+</head>
+
+<body>
+
+  {% include "main/includes/navbar.html" %}
+	
+  {% include "main/includes/messages.html" %}
+  
+  
+  
+  <div class = "container">
+    <br>
+	{% block content %}
+	{% endblock %}
+  </div>
+  
+  <script src="{% static 'main/personal/js/main.js' %}"></script>
+
+</body>
+

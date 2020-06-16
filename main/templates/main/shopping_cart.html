@@ -1,0 +1,16 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+
+<h3>Shopping Cart</h3>
+
+<br><br>
+
+<ul>
+	{% for item in shopping_list %}
+		<li>
+			{{item}}
+		</li>
+	{% endfor %}
+</ul>
+{% endblock %}

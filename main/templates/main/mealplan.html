@@ -1,0 +1,14 @@
+{% extends "main/header.html" %}
+<head>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'main/personal/css/style.css' %}">
+</head>
+  {% block content %}
+	<a class="btn btn-info left" href="{'% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
+	<a class="btn btn-info right" href="{'% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
+
+  {{ calendar|safe }}
+  
+  
+  {% endblock %}
+

@@ -1,0 +1,212 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="carousel-container">
+	<div class="carousel-title">
+		<h3>Chicken Recipes</h3>
+	</div>
+	 
+	<div class="carousel">
+			<button class="carousel__button carousel__button--left is-hidden">
+				<img src="{% static 'main/img/left.svg' %}" alt="">
+			</button>
+			<div class="carousel__track-container">
+				<ul class="carousel__track">
+					{% for value in chicken_list %}
+						{% if value.0 == chicken_list.0.0 %}
+							<li class="carousel__slide current-slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% else %}	
+							<li class="carousel__slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			<button class="carousel__button carousel__button--right">
+				<img src="{% static 'main/img/right.svg' %}" alt="">
+			</button>
+			
+			<div class="carousel__nav">
+				<button class="carousel__indicator current-slide"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+		</div>
+	</div>
+</div>
+
+<div class="carousel-container">
+	<div class="carousel-title">
+		<h3>Cake Recipes</h3>
+	</div>
+	 
+	<div class="carousel">
+			<button class="carousel__button carousel__button--left is-hidden">
+				<img src="{% static 'main/img/left.svg' %}" alt="">
+			</button>
+			<div class="carousel__track-container">
+				<ul class="carousel__track">
+					{% for value in cake_list %}
+						{% if value.0 == cake_list.0.0 %}
+							<li class="carousel__slide current-slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% else %}	
+							<li class="carousel__slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			<button class="carousel__button carousel__button--right">
+				<img src="{% static 'main/img/right.svg' %}" alt="">
+			</button>
+			
+			<div class="carousel__nav">
+				<button class="carousel__indicator current-slide"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+		</div>
+	</div>
+</div>
+	
+<div class="carousel-container">
+	<div class="carousel-title">
+		<h3>Salad Recipes</h3>
+	</div>
+	 
+	<div class="carousel">
+			<button class="carousel__button carousel__button--left is-hidden">
+				<img src="{% static 'main/img/left.svg' %}" alt="">
+			</button>
+			<div class="carousel__track-container">
+				<ul class="carousel__track">
+					{% for value in salad_list %}
+						{% if value.0 == salad_list.0.0 %}
+							<li class="carousel__slide current-slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% else %}	
+							<li class="carousel__slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			<button class="carousel__button carousel__button--right">
+				<img src="{% static 'main/img/right.svg' %}" alt="">
+			</button>
+			
+			<div class="carousel__nav">
+				<button class="carousel__indicator current-slide"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+		</div>
+	</div>
+</div>
+	
+<div class="carousel-container">
+	<div class="carousel-title">
+		<h3>Italian Recipes</h3>
+	</div>
+	 
+	<div class="carousel">
+			<button class="carousel__button carousel__button--left is-hidden">
+				<img src="{% static 'main/img/left.svg' %}" alt="">
+			</button>
+			<div class="carousel__track-container">
+				<ul class="carousel__track">
+					{% for value in italian_list %}
+						{% if value.0 == italian_list.0.0 %}
+							<li class="carousel__slide current-slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% else %}	
+							<li class="carousel__slide">
+								<div class="tooltip">
+									<a href="/{{value.0}}"><img class="carousel__images" src="{{value.1}}" alt=""></a>
+									<span class="tooltiptext">{{value.0}}</span>
+								</div>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			<button class="carousel__button carousel__button--right">
+				<img src="{% static 'main/img/right.svg' %}" alt="">
+			</button>
+			
+			<div class="carousel__nav">
+				<button class="carousel__indicator current-slide"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				<button class="carousel__indicator"></button>
+				
+		</div>  
+	</div>
+</div>
+
+
+{% endblock %}

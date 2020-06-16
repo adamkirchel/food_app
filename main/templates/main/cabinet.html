@@ -1,0 +1,588 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+{% load static %}
+
+<h3>What's in your larder?</h3>
+<br>
+	<form method="POST"> 
+		{% csrf_token %}
+		<div class = "row">
+			<div class = "col">
+				Item : {{form.item}}
+			</div>
+			<div class = "col">
+				Type : {{form.category}}
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col">
+				Amount : {{form.amount}}
+			</div>
+			<div class = "col">
+				Unit : {{form.unit}}
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col">
+				Price : {{form.price}}
+			</div>
+			<div class = "col">
+				Unit: ...
+			</div>
+		</div>
+		<div class="btn-container">
+			<button class="btn" type="submit" name="Add">Add</button>
+		</div>
+	</form>
+
+
+<div class="tab">
+    <ul class="tab-nav">
+      <li data-li="all" class="active">
+        <p>All</p>
+      </li>
+      <li data-li="fresh">
+        <p>Fresh food</p>
+      </li>
+      <li data-li="grains">
+        <p>Pasta and grains</p>
+      </li>
+      <li data-li="baking">
+        <p>Baking items</p>
+      </li>
+	  <li data-li="canned">
+        <p>Canned items</p>
+      </li>
+	  <li data-li="drinks">
+        <p>Drinks</p>
+      </li>
+	  <li data-li="snacks">
+        <p>Snacks</p>
+      </li>
+	  <li data-li="other">
+        <p>Other</p>
+      </li>
+    </ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</div>
+
+<div style="overflow-y:auto;">
+  <div class="tab-contents">
+      <div class="item all active">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th scope="col">Item</th>
+			<th scope="col">Amount</th>
+			<th scope="col">Unit</th>
+			<th scope="col">Price</th>
+			<th scope="col">Price/Unit</th>
+			<th>Remove</th>
+
+					
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+			</tr>
+			
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>	
+        </div>
+	  </div>
+      <div class="item fresh" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+					
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Fresh food" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+			
+					
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>	
+        </div>
+      </div>
+      <div class="item grains" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+
+					
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Pasta and grains" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+				
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>	
+        </div>
+      </div>
+      <div class="item baking" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Baking items" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+				
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>
+        </div>
+      </div>
+	  <div class="item canned" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Canned items" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+				
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>
+        </div>
+      </div>
+	  <div class="item drinks" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Drinks" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+				
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>
+        </div>
+      </div>
+	  <div class="item snacks" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <<table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Snacks" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+				
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>
+        </div>
+      </div>
+	  <div class="item other" style="display: none;">
+        <div class="item_info">
+          <div class="img"></div>
+          <table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+		
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Unit</th>
+			<th>Price</th>
+			<th>Price/Unit</th>
+			<th>Remove</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+		
+		
+		{% for object in larder_objects %}
+			
+			{% if object.category == "Other" %}
+			
+			<tr>
+					
+						
+				<td>
+					{{ object.item }}
+				</td>
+				<td>
+					{{ object.amount }}
+				</td>
+				<td>
+					{{ object.unit }}
+				</td>
+				<td>
+					{{ object.price }}
+				</td>
+				<td>
+					{{ object.price_unit }}
+				</td>
+				<td>
+					<form method="get">
+						{% csrf_token %}
+						<button  style = "background-color:red;color:white;width:30px;height:30px;border-radius:15px;" type="submit" value="{{object.item}}" name="remove"><strong>X</strong></button>
+					</form>
+				</td>
+				
+			</tr>
+			
+			{% endif %}
+				
+		{% endfor %}
+		
+		</tbody>
+	</table>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="carousel-title">
+	<h3>Recipes you can make</h3>
+</div>
+ 
+<div class="carousel">
+		<button class="carousel__button carousel__button--left is-hidden">
+			<img src="{% static 'main/img/left.svg' %}" alt="">
+		</button>
+		<div class="carousel__track-container">
+			<ul class="carousel__track">
+				{% for r in recipes %}
+					{% if r.0 == recipes.0.0 %}
+						<li class="carousel__slide current-slide">
+							<div class="tooltip">
+								<a href="/{{r.0}}"><img class="carousel__images" src="{{r.1}}" alt=""></a>
+								<span class="tooltiptext">{{r.0}}</span>
+							</div>
+						</li>
+					{% else %}	
+						<li class="carousel__slide">
+							<div class="tooltip">
+								<a href="/{{r.0}}"><img class="carousel__images" src="{{r.1}}" alt=""></a>
+								<span class="tooltiptext">{{r.0}}</span>
+							</div>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+		<button class="carousel__button carousel__button--right">
+			<img src="{% static 'main/img/right.svg' %}" alt="">
+		</button>
+		
+		<div class="carousel__nav">
+			<button class="carousel__indicator current-slide"></button>
+			<button class="carousel__indicator"></button>
+			<button class="carousel__indicator"></button>
+			<button class="carousel__indicator"></button>
+	</div>
+</div>
+
+
+{% endblock %}

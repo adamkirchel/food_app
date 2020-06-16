@@ -1,0 +1,26 @@
+
+<nav>
+	<div class="logo">
+		<h4>Larder</h4>
+	</div>
+	<ul class="nav-links">
+		<li><a href="/">Home</a></li>
+		{% if user.is_authenticated %}
+			<li><a href="/cabinet/">Cabinet</a></li>
+			<li><a href="/kitchen/">Kitchen</a></li>
+			<li><a href="/mealplan/">Meal Plan</a></li>
+			<li><a href="/account/">{{user.username}}</a></li>
+			<li><a href="/logout/">Logout</a></li>
+			<li><a href="/shopping_cart/">Shopping Cart</a></li>
+		{% else %}
+			<li><a href="/register/">Register</a></li>
+			<li><a href="/login/">Login</a></li>
+		{% endif %}
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+	
