@@ -9,7 +9,7 @@ django-heroku==0.3.1
 django-tinymce==3.0.2
 gunicorn==20.0.4
 ipykernel==5.1.4
-ipython==7.12.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 ipywidgets==7.5.1
 json5==0.9.1
